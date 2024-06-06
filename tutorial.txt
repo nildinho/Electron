@@ -1,0 +1,6 @@
+Tutorial electron
+
+1)iniciar um novo projeto node
+    npm init
+
+(seguir a documentação)    

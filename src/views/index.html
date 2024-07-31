@@ -1,12 +1,40 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <!-- o Electron usa o título na janela -->
+    <!-- evitar ataques de Cross Site Scripting (injeção de dados)-->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'">
+    <!-- o Electron usa o título na janela -->
     <title>Tutorial Electron</title>
+
+
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="../public/css/bootstrap.min.css">
+
+    <!-- css personalizado (por ultimo)-->
+    <link rel="stylesheet " href="../public/css/style.css">
 </head>
+
 <body>
-    <h1>Hello Electron</h1>
+    <div class="container">
+
+        <h1>Hello Electron</h1>
+        <button class="btn btn-info" onclick="sobre()">Sobre</button>
+    </div>
+
+    <!-- Rodapé-->
+    <footer>
+        <p id="dataAtual"></p>
+    </footer>
+    <!-- bootstrap-->
+    <script src="../public/js/bootstrap.min.js"></script>
+
+    <!--Processo de renderização -->
+    <script src="./renderer.js"></script>
+
+
 </body>
+
 </html>

@@ -31,3 +31,65 @@ exemplo: Acesso a links externos
 shell
 
 obs2: o shell é usado no main para acessar recursos externos (links)
+
+5) Processos (principal e renderização)
+- só pode existir um processo de renderização (main.js)
+- Para Criar um processo de renderização devemos ligar um documento js na página html
+- podemos usar um único processo de renderização para todas as páginas html, porém é recomendado usar um processo de renderização por documento html
+- por uma questão didática podemos dizer que o processo de renderização é o fornt-end da aplicação e processo principal é o back-end da apliccação
+
+preload.js (seguir a documentação para implementar)
+O preload.js é usado para:
+1) Expor a utilização do mode e recursos do electron para o processo de renderização, melhorando o desempenho  e a segurança
+2) Para situações onde você sabe que vai precisar de certos recursos e dados antes que o usuário solicite  diretamente, tornando a experiência do usuário mais rápido e suave 
+
+obs: É possível tirar o contexto de isolamento e permitir a execução do node.js no processo de renderização
+
+IPC (inter-process comunication)
+ipcMain (processo principal)
+ipcRenderer (processo de renderização)
+
+sintaxe do icMain e ipcRenderer (recebimento)
+on()
+ipcMain .on (() => {})
+ipcRenderer .on (() => {})
+
+                       preload.js     
+
+Fluxo: ipcRenderer -> hello() -> main.js (ipcMain)
+
+_________________________________________________
+Uso de frameworks (front-end) no electron
+- bootstrap
+      |
+      _____________________ local(download)
+
+passo 1: fazer o download do cs e js compilado
+passo 2: descompactar e copiar o css_min e js_min para a pasta publica        
+passo 3:link com o documento html
+
+para usar o bootstrap seguir a documentação:
+Dica:
+o bootstrap trabalha com conceitos de classes
+Inicie criando um container (div.container)
+
+_________________________________________________
+Relação entre janelas (parent-child) e modal
+- Foco de Usuário no sistema
+-  segurança e desempenho
+
+passo 1: Determinar a janela pai (principal)
+
+_________________________________________________
+
+IPC - comunicação segura entre processos
+
+ipcMain (main.js)
+      || <------------------------------ preload.js
+ipcRenderer (renderer.js)
+
+Obs:
+1) main.js (processo principal e único)
+2) renderer.js (processo de renderização)
+    - Podem existir vários processos de renderização
+    - Renderer.js (nome atribuído - você pode escolher qualquer nome)
